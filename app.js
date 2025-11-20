@@ -1,10 +1,12 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 
 const connectDB = require("./src/config/db.config");
 const booksRoute = require("./src/routes/booksRoute");
 const memberRoute = require("./src/routes/memberRoute");
-const path = require("path");
+const borrowRecordRoute = require("./src/routes/borrowRecordsRoute");
+const returnBookRoute = require("./src/routes/returnBookRoute");
 
 const app = express();
 
@@ -20,7 +22,9 @@ connectDB();
 
 app.use("/api", booksRoute);
 app.use("/api", memberRoute);
+app.use("/api", borrowRecordRoute);
+app.use("/api", returnBookRoute);
 
-app.listen(process.env.PORT, (req, res) => {
+app.listen(process.env.PORT, () => {
   console.log(`server is running on port no ${process.env.PORT}`);
 });

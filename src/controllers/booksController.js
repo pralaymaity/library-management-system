@@ -1,6 +1,8 @@
 const booksService = require("../service/booksService");
 const xlsx = require("xlsx"); // for read excel file
 
+const fs = require("fs");
+
 exports.createBooks = async (req, res) => {
   const data = req.body;
   console.log(data);
@@ -28,6 +30,16 @@ exports.createMultipileBooks = async (req, res) => {
 
     const sheet = workbook.Sheets[sheetName];
     const jsonData = xlsx.utils.sheet_to_json(sheet);
+
+    console.log(jsonData);
+
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error("Error deleting file:", err);
+        return;
+      }
+      console.log("File deleted successfully!");
+    });
 
     await booksService.createMultipileBooks(jsonData);
 
