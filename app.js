@@ -7,6 +7,7 @@ const booksRoute = require("./src/routes/booksRoute");
 const memberRoute = require("./src/routes/memberRoute");
 const borrowRecordRoute = require("./src/routes/borrowRecordsRoute");
 const returnBookRoute = require("./src/routes/returnBookRoute");
+const reportRoute = require("./src/routes/reportRoute");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/api", booksRoute);
 app.use("/api", memberRoute);
 app.use("/api", borrowRecordRoute);
 app.use("/api", returnBookRoute);
+app.use("/api", reportRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is running on port no ${process.env.PORT}`);
