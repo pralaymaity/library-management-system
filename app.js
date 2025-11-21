@@ -25,7 +25,7 @@ app.use("/api", booksRoute);
 app.use("/api", memberRoute);
 app.use("/api", borrowRecordRoute);
 app.use("/api", returnBookRoute);
-app.use("/api", reportRoute);
+app.use("/report", reportRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is running on port no ${process.env.PORT}`);
